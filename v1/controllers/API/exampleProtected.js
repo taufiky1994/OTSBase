@@ -11,7 +11,7 @@ var exampleModel = require('../../models/exampleModel');
 var utils = require('../../functions/utils');
 
 router.get('/try', function(req, res) {
-  exampleModel.try(utils.decodeAuthorizationHeader(req.headers.authorization), req.body, function(err, resModel) {
+  exampleModel.tryProtected(utils.decodeAuthorizationHeader(req.headers.authorization), req.body, function(err, resModel) {
     if (err) res.send(err);
     else res.send(resModel);
   });

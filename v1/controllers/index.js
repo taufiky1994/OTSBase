@@ -1,4 +1,4 @@
-//APPLICATION ROUTING AND CONTROLLING ENTRY POINT
+//CONTROLLER: index
 
 //Requires Modules
 var express = require('express');
@@ -11,6 +11,7 @@ var jwtCheck = jwt({
   audience: process.env.AUTH0_CLIENT_ID
 });
 
-router.use('/example', jwtCheck, require('./API/example'));
+router.use('/exampleUnprotected', require('./API/exampleUnprotected'));
+router.use('/exampleProtected', jwtCheck, require('./API/exampleProtected'));
 
 module.exports = router;
